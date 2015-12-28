@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<body>
+
+This text above will not be displayed.
+
+<ui:composition template="/WEB-INF/layout/template.xhtml">
+<ui:define name="phaseListener">
+</ui:define>
+This text will not be displayed.
+
+  <ui:define name="title">
+    ryan.log
+  </ui:define>
+
+This text will not be displayed.
+	<ui:define name="primaryContent">
+		<div id="primaryContent">
+			<div class="box">
+				<h2>所有存档</h2>
+				<div class="boxContent">
+				<ul>
+				<c:forEach items="#{monthApplication.monthPostCount}" var="entity" >
+					<li><h:outputLink  value="#{facesContext.externalContext.requestContextPath}/month_#{entity.key}.html"><h:outputText value="#{entity.key}"></h:outputText></h:outputLink>(#{entity.value})</li>
+				</c:forEach>
+				</ul>
+				</div>
+				 
+			</div>
+			
+			 
+		</div>
+	</ui:define>
+  
+</ui:composition>
+
+This text below will also not be displayed.
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<!--
+	Design by Free CSS Templates
+	http://www.freecsstemplates.org
+	Released for free under a Creative Commons Attribution 2.5 License
+-->
+<f:view>
+<ui:insert name="phaseListener">
+phase listener 
+</ui:insert>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> <ui:insert name="title">Standardized by Free CSS Templates</ui:insert></title>
+<ui:insert name="jscode">
+insert jscode
+</ui:insert>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="#{request.contextPath}/default.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<div id="outer">
+    <div id="menu">
+		<ul>
+			<li class="first"><a href="#{request.contextPath}/home.html" accesskey="1" title="">Home</a></li>
+			<li><a href="#{request.contextPath}/about/about.html" accesskey="2" title="">About Me</a></li>
+			<li><a href="#{request.contextPath}/about/services.html" accesskey="4" title="">Services</a></li>
+			<li><a href="#{request.contextPath}/about/contact.html" accesskey="5" title="">Contact Me</a></li>
+		</ul>
+	</div>
+	<div id="header">
+		<h1><a href="#">Standardized</a></h1>
+		<h2>by Free CSS Templates</h2>
+	</div>
+	
+	<div id="content">
+		<div id="primaryContentContainer">
+			
+				<ui:insert name="primaryContent">
+					<ui:include src="primaryContent.xhtml" />
+				</ui:insert>
+		</div>
+		
+			<ui:insert name="secondaryContent">
+				<ui:include src="secondaryContent.xhtml" />
+			</ui:insert>
+		<div class="clear"></div>
+	</div>
+	<div id="footer">
+		<p>Copyright &copy; 2006 Sitename.com. Designed by <a href="http://www.freecsstemplates.org">Free CSS Templates</a>|<a href="me.html">M</a></p>
+	</div>
+</div>
+</body>
+</f:view>
+</html>

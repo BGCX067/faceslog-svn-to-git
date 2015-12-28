@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<body>
+
+This text above will not be displayed.
+
+<ui:composition template="/WEB-INF/layout/template.xhtml">
+<ui:define name="phaseListener">
+	<f:phaseListener type="cn.hexiao.flog.web.MonthPageListener" />
+</ui:define>
+This text will not be displayed.
+
+  <ui:define name="title">
+    ryan.log
+  </ui:define>
+
+This text will not be displayed.
+	<ui:define name="primaryContent">
+		<div id="primaryContent">
+			<h2>你正在查看"<h:outputText value="#{param.month}" converter="ch.hexiao.month.converter"></h:outputText>"发表的文章</h2>
+			 <ui:repeat value="#{monthPage.monthPosts}" var="pw">
+				<div class="box">
+					<span><h:outputText value="#{pw.date}"></h:outputText></span>
+					<h2><h:outputLink value="post_#{pw.post.id}.html"><h:outputText value="#{pw.post.title}"></h:outputText></h:outputLink></h2>
+					<div class="boxContent">
+						<p><strong>Standardized</strong> is a free template from <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. You're free to use it for both commercial or personal use. I only ask that you link back to <a href="http://www.freecsstemplates.org/">my site</a> in some way. Enjoy :)</p>
+						<p>Sed vestibulum blandit nisl. Quisque elementum convallis purus. Quisque pellentesque semper massa. Suspendisse potenti. Donec nulla est, laoreet quis, pellentesque in, congue in, dui. Nunc rhoncus placerat augue.</p>
+					</div>
+					<div class="boxFooter">
+					<h:outputText value="#{pw.time} | 浏览 (#{pw.post.hitCount}) | "></h:outputText>
+					<h:outputLink value="post_#{pw.post.id}.html#comments"><h:outputText value="评论"></h:outputText> </h:outputLink>
+					 <h:outputText value=" (#{pw.commentsSize}) | 分类:"></h:outputText>
+					 <h:outputLink value="home_#{pw.post.category.name}.html"><h:outputText value="#{pw.post.category.name}"></h:outputText> </h:outputLink>
+					</div>
+				</div>
+		</ui:repeat>
+		</div>
+	</ui:define>
+  
+</ui:composition>
+
+This text below will also not be displayed.
+
+</body>
+</html>

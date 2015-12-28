@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<methodResponse>
+	<params>
+		<param>
+			<value>
+				<struct>
+					<member>
+						<name>url</name>
+						<value>http://localhost:8080/Flog</value>
+					</member>
+					<member>
+						<name>blogName</name>
+						<value>Ryan's weblog 鎴戠殑</value>
+					</member>
+					<member>
+						<name>blogid</name>
+						<value>1</value>
+					</member>
+				</struct>
+			</value>
+		</param>
+	</params>
+</methodResponse>

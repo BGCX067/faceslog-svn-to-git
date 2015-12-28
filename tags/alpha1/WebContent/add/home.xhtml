@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<body>
+
+This text above will not be displayed.
+
+<ui:composition template="/WEB-INF/layout/template.xhtml">
+<ui:define name="phaseListener">
+</ui:define>
+This text will not be displayed.
+
+  <ui:define name="title">
+    ryan.log
+  </ui:define>
+  <ui:define name="secondaryContent">
+  	<ui:include src="secondaryContent.xhtml" />
+  </ui:define>
+
+This text will not be displayed.
+	<ui:define name="primaryContent">
+		<div id="primaryContent">
+		<h2>最近发表的文章</h2>
+		<h:form id="post_form">
+			<h:dataTable id="post_data" value="#{adminHomePage.latestPosts}" var="post" binding="#{adminHomePage.data}">
+				<h:column>
+					<f:facet name="header">标题</f:facet>
+					<h:outputText value="#{post.title}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">分类</f:facet>
+					<h:outputText value="#{post.category.name}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">发表日期</f:facet>
+					<h:outputText value="#{post.pubTime}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">管理</f:facet>
+					<h:commandButton styleClass="button" id="edit" action="#{adminHomePage.editPostAction}" value="编辑"></h:commandButton>
+					<h:commandButton styleClass="button" id="del" action="#{adminHomePage.deletePostAction}" value="删除" onclick="return confirm('确认删除?');"></h:commandButton>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		</div>
+	</ui:define>
+  
+</ui:composition>
+
+This text below will also not be displayed.
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      >
+<body>
+
+This text above will not be displayed.
+
+<ui:composition template="/WEB-INF/layout/template.xhtml">
+<ui:define name="phaseListener">
+	<f:phaseListener type="cn.hexiao.flog.web.PostPageListener" />
+</ui:define>
+This text will not be displayed.
+
+  <ui:define name="title">
+    ryan.log
+  </ui:define>
+
+This text will not be displayed.
+	<ui:define name="primaryContent">
+		<div id="primaryContent">
+			<div id="pre_next">
+				<h:outputLink value="post_#{postPage.next.post.id}.html" styleClass="next" rendered="#{postPage.next != null}"><h:outputText value="#{postPage.next.post.title}"></h:outputText></h:outputLink>
+				<h:outputText value=" | " rendered="#{postPage.next != null and postPage.previous != null}"></h:outputText>
+				<h:outputLink value="post_#{postPage.previous.post.id}.html" styleClass="pre" rendered="#{postPage.previous != null}"><h:outputText value="#{postPage.previous.post.title}"></h:outputText></h:outputLink>
+				 
+			</div>
+			<div class="box">
+				<span><h:outputText value="#{postPage.post.date}"></h:outputText></span>
+				<h2><h:outputLink value="post_#{postPage.post.post.id}.html"><h:outputText value="#{postPage.post.post.title}"></h:outputText></h:outputLink></h2>
+				<div class="boxContent">
+					<h:outputText value="#{postPage.post.post.content}" escape="false"></h:outputText>
+				</div>
+				<div class="boxFooter">
+					<h:outputText value="#{postPage.post.time} | 浏览 (#{postPage.post.post.hitCount}) | "></h:outputText>
+					<h:outputLink value="post_#{postPage.post.post.id}.html#comments"><h:outputText value="评论"></h:outputText> </h:outputLink>
+				 	<h:outputText value=" (#{postPage.post.commentsSize}) | 分类:"></h:outputText>
+				 	<h:outputLink value="home_#{postPage.post.post.category.name}.html"><h:outputText value="#{postPage.post.post.category.name}"></h:outputText> </h:outputLink>
+				</div>
+			</div>
+			
+			<div class="comments">
+				<h3>评论</h3>
+				<a id="comments" name="comments"></a>
+				<div class="blog_comment">
+					<h:dataTable id="rich_comments" width="100%" value="#{postPage.post.comments}" var="com">
+						<h:column>
+							<div class="comment_title">
+							<h:outputText value="#{com.usernme} #{com.postTime}"></h:outputText>
+						</div>
+						<div class="comment_content">
+							<h:outputText value="#{com.content}"></h:outputText>
+						</div>
+						</h:column>
+					</h:dataTable>
+					<ui:remove>
+					<a4j:region id=" TODO ajax4jsf do not work with ui:repeat" >
+					<ui:repeat value="#{postPage.post.comments}" var="com">
+						<div class="comment_title">
+							<h:outputText value="#{com.usernme} #{com.postTime}"></h:outputText>
+						</div>
+						<div class="comment_content">
+							<h:outputText value="#{com.content}"></h:outputText>
+						</div>
+					</ui:repeat>
+					</a4j:region>
+					</ui:remove>
+				</div>
+			</div>
+			<div class="blog_comment">
+				<h3>发表评论</h3>
+				<div class="post_comment">
+				<ui:remove>
+				<h:form id="pub_comment">
+				 	<fieldset>
+				 		<p>
+				 			<label for="c_name">Name:<em class="required">(*)</em></label>
+					 	<h:inputText id="c_name" value="#{postPage.username}" required="true"></h:inputText>
+					 	<h:message for="c_name"></h:message> 
+				 		</p>
+				 		<ui:remove>
+				 		<p>
+				 			<label for="url">Site:</label>
+				 			<input name="url" id="url"  type="text" />
+				 		</p>
+				 		</ui:remove>
+				 		<p>
+				 			<h:outputLabel for="c_num" value="#{postPage.numa} + #{postPage.numb} = "></h:outputLabel>
+					 	<h:inputText id="c_num" value="#{postPage.sum}" rendered="true"></h:inputText>
+					 	<h:message for="c_num" id="c_num1"></h:message>
+				 		</p>
+				 		<p class="content">
+				 			<label for="c_content">Content:</label>
+				 			<h:inputTextarea id="c_content" value="#{postPage.content}" rendered="true"></h:inputTextarea>
+					 	<h:message for="c_content"></h:message>
+				 		</p>
+						<p>
+							<ui:remove>
+							<h:commandButton action="#{postPage.addComment}" value=" 提交 " styleClass="button">
+								<f:param name="page" value="#{postPage.post.post.id}" />
+							</h:commandButton>
+							</ui:remove>
+							<h:commandLink  action="#{postPage.addComment}" value=" 提交 " styleClass="button">
+								<f:param name="page" value="#{postPage.post.post.id}" />
+							</h:commandLink>
+						</p>
+
+				 	</fieldset>
+				 
+					 </h:form>
+					</ui:remove>
+					<a4j:form id="pub_comment" ajaxSubmit="true" reRender="rich_comments,pub_comment">
+				 	<fieldset>
+				 		<p>
+				 			<label for="c_name">你的大名:<em class="required">*</em></label>
+					 	<h:inputText id="c_name" value="#{postPage.username}" required="true" requiredMessage="姓名不能为空" validatorMessage="姓名不能为空"></h:inputText>
+					 	<h:message for="c_name" ></h:message> 
+				 		</p>
+				 		<ui:remove>
+				 		<p>
+				 			<label for="url">Site:</label>
+				 			<input name="url" id="url"  type="text" />
+				 		</p>
+				 		</ui:remove>
+				 		<p>
+				 			<h:outputLabel for="c_num" value="#{postPage.numa} + #{postPage.numb} = "></h:outputLabel>
+					 	<h:inputText id="c_num" value="#{postPage.sum}" rendered="true"></h:inputText>
+					 	<h:message for="c_num" id="c_num1"></h:message>
+				 		</p>
+				 		<p class="content">
+				 			<label for="c_content">评论内容:<em class="required">*</em></label>
+				 			<h:inputTextarea id="c_content" value="#{postPage.content}" rendered="true" requiredMessage="评论内容不能为空"></h:inputTextarea>
+					 	<h:message for="c_content"></h:message>
+				 		</p>
+						<p>
+							<h:commandButton  action="#{postPage.addComment}" value=" 提交 " styleClass="button">
+							</h:commandButton>
+							<ui:remove>
+							<a4j:commandButton action="#{postPage.addComment}" value=" 提交 " styleClass="button">
+							</a4j:commandButton>
+							</ui:remove>
+							
+						</p>
+
+				 	</fieldset>
+				 
+					 </a4j:form>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+  
+</ui:composition>
+
+This text below will also not be displayed.
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<body>
+
+This text above will not be displayed.
+
+<ui:composition template="/WEB-INF/layout/template.xhtml">
+<ui:define name="phaseListener">
+</ui:define>
+This text will not be displayed.
+
+  <ui:define name="title">
+    ryan.log
+  </ui:define>
+  <ui:define name="secondaryContent">
+  	<ui:include src="secondaryContent.xhtml" />
+  </ui:define>
+
+This text will not be displayed.
+	<ui:define name="primaryContent">
+		<div id="primaryContent">
+		<h2>新增书签</h2>
+		<h:form id="new_cat">
+		<h:panelGrid columns="2">
+		<h:outputLabel value="名称:" for="cat_name"></h:outputLabel> <h:inputText id="cat_name" value="#{bookmarkPage.name}" rendered="true"></h:inputText>
+		<h:outputLabel value="描述:" for="cat_des"></h:outputLabel> <h:inputText id="cat_des" value="#{bookmarkPage.des}"  ></h:inputText>
+		<h:outputLabel value="URL:" for="cat_url"></h:outputLabel> <h:inputText id="cat_url" value="#{bookmarkPage.url}"  rendered="true"></h:inputText>
+		<h:outputLabel value="FeedURL:" for="cat_feedurl"></h:outputLabel> <h:inputText id="cat_feedurl" value="#{bookmarkPage.feedUrl}"  ></h:inputText>
+		<h:outputLabel value="图片:" for="cat_img"></h:outputLabel> <h:inputText id="cat_img" value="#{bookmarkPage.image}"  ></h:inputText>
+		<h:commandButton action="#{bookmarkPage.addBmAction}" value="提交"></h:commandButton>
+		</h:panelGrid>
+		</h:form>
+		</div>
+		<div id="primaryContent">
+		<h2>所有书签</h2>
+		<h:form id="cat_form">
+			<h:dataTable id="cat_data" value="#{homePage.bookmarks}" var="bm" binding="#{bookmarkPage.data}">
+				<h:column>
+					<f:facet name="header">名称</f:facet>
+					<h:outputText value="#{bm.name}"  ></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">描述</f:facet>
+					<h:outputText value="#{bm.description}" style="width:100px"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">URL</f:facet>
+					<h:outputText value="#{bm.url}" style="width:100px"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">FeedURL</f:facet>
+					<h:outputText value="#{bm.feedUrl}" style="width:100px"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">管理</f:facet>
+					<h:commandButton styleClass="button" id="edit" action="#{bookmarkPage.editBmAction}" value="编辑"></h:commandButton>
+					<h:commandButton styleClass="button" id="del" action="#{bookmarkPage.deleteBmAction}" value="删除" onclick="return confirm('确认删除?');"></h:commandButton>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		</div>
+	</ui:define>
+  
+</ui:composition>
+
+This text below will also not be displayed.
+
+</body>
+</html>

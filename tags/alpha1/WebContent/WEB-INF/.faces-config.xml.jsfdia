@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS ENTITY="JSFProcess">
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#me.xhtml"
+  PATH="/me.xhtml" SHAPE="166,185,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#me.xhtml:0"
+   NAME="item" PATH="/me.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="login_success::#add#home.xhtml" NAME="output"
+    PATH="/add/home.xhtml" TARGET="rules:#add#home.xhtml" TITLE="login_success"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#add#home.xhtml"
+  PATH="/add/home.xhtml" SHAPE="336,144,50,25">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#add#home.xhtml:0"
+   NAME="item" PATH="/add/home.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="edit_post::#add#edit.xhtml" NAME="output" PATH="/add/edit.xhtml"
+    TARGET="rules:#add#edit.xhtml" TITLE="edit_post"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#add#edit.xhtml"
+  PATH="/add/edit.xhtml" SHAPE="488,232,50,25" persistent="true"/>
+</PROCESS>

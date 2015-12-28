@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<body>
+
+// login page
+
+<ui:composition template="/WEB-INF/layout/template.xhtml">
+<ui:define name="phaseListener">
+</ui:define>
+This text will not be displayed.
+
+  <ui:define name="title">
+    ryan.log -- login
+  </ui:define>
+
+This text will not be displayed.
+	<ui:define name="primaryContent">
+		<div id="primaryContent"><h2>登陆</h2>
+			<div class="box boxA">
+				<div class="boxContent">
+					<h:form >
+						<div>
+							<span>Username:</span>
+							<h:inputText binding="#{loginPage.username}" styleClass="text" required="true" id="username"></h:inputText>
+							<span>Password:</span>
+							<h:inputSecret binding="#{loginPage.password}" styleClass="text" required="true" id="password"></h:inputSecret>
+							 
+							<h:commandButton action="#{loginPage.login}" value="Login" styleClass="button"></h:commandButton>
+						</div>
+					</h:form>
+				</div>
+			</div>
+				 
+			</div>
+			
+			 
+	</ui:define>
+  
+</ui:composition>
+
+This text below will also not be displayed.
+
+</body>
+</html>

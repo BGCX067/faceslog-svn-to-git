@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<body>
+
+This text above will not be displayed.
+
+<ui:composition template="/WEB-INF/layout/template.xhtml">
+<ui:define name="phaseListener">
+</ui:define>
+This text will not be displayed.
+
+  <ui:define name="title">
+    ryan.log
+  </ui:define>
+  <ui:define name="secondaryContent">
+  	<ui:include src="secondaryContent.xhtml" />
+  </ui:define>
+
+This text will not be displayed.
+	<ui:define name="primaryContent">
+		
+		<div id="primaryContent">
+		<h2>最新留言</h2>
+		<h:form id="cat_form">
+			<h:dataTable id="cat_data" value="#{homePage.latestComments}" var="bm" binding="#{commentsPage.data}">
+				<h:column>
+					<f:facet name="header">文章名称</f:facet>
+					<h:outputText value="#{bm.post.title}"  ></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">内容</f:facet>
+					<h:outputText value="#{bm.content}" style="width:400px"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">姓名</f:facet>
+					<h:outputText value="#{bm.usernme}" style="width:100px"></h:outputText>
+				</h:column>
+				 
+				<h:column>
+					<f:facet name="header">管理</f:facet>
+					<h:commandButton styleClass="button" id="del" action="#{commentsPage.deleteCommentAction}" value="删除" onclick="return confirm('确认删除?');"></h:commandButton>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		</div>
+	</ui:define>
+  
+</ui:composition>
+
+This text below will also not be displayed.
+
+</body>
+</html>

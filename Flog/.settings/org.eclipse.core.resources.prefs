@@ -1,0 +1,22 @@
+#Fri Jan 25 09:39:06 CST 2008
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/layout/primaryContent.xhtml=UTF-8
+encoding//WebContent/WEB-INF/layout/secondaryContent.xhtml=UTF-8
+encoding//WebContent/add/bookmarks.xhtml=UTF-8
+encoding//WebContent/add/cat.xhtml=UTF-8
+encoding//WebContent/add/categories.xhtml=UTF-8
+encoding//WebContent/add/comments.xhtml=UTF-8
+encoding//WebContent/add/edit.xhtml=UTF-8
+encoding//WebContent/add/home.xhtml=UTF-8
+encoding//WebContent/add/new.xhtml=UTF-8
+encoding//WebContent/add/secondaryContent.xhtml=UTF-8
+encoding//WebContent/home.xhtml=UTF-8
+encoding//WebContent/index.html=UTF-8
+encoding//WebContent/me.xhtml=UTF-8
+encoding//WebContent/month.xhtml=UTF-8
+encoding//WebContent/monthAll.xhtml=UTF-8
+encoding//WebContent/post.xhtml=UTF-8
+encoding//WebContent/response.xhtml=UTF-8
+encoding//WebContent/sorry.jsp=UTF-8
+encoding//src/main/import.sql=gbk
+encoding/<project>=UTF-8

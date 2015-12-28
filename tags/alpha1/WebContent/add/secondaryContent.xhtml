@@ -1,0 +1,48 @@
+<div id="secondaryContent" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<div class="box">
+<h3>博客管理</h3>
+<div class="boxContent">
+<ul>
+	<li><a href="new.html">新建文章</a></li>
+	<li><a href="cat.html">分类管理</a></li>
+	<li><a href="bookmarks.html">书签管理</a></li>
+	<li><a href="comments.html">留言管理</a></li>
+</ul>
+</div>
+</div>
+<div class="box">
+<h3>文章管理</h3>
+<div class="boxContent">
+<ul>
+	<li><a href="categories.html">所有分类</a></li>
+	<ui:repeat value="#{homePage.categories}" var="cat">
+		<li><h:outputLink title="#{cat.description}"
+			value="categories_#{cat.name}.html">
+			<h:outputText value="#{cat.name}"></h:outputText>
+		</h:outputLink></li>
+	</ui:repeat>
+</ul>
+</div>
+</div>
+
+<div class="box">
+<h3>最新评论</h3>
+<div class="boxContent">
+<ul>
+	<ui:repeat value="#{homePage.latestComments}" var="com">
+		<li><h:outputLink title="回复:#{com.post.title}"
+			value="#{facesContext.externalContext.requestContextPath}/post_#{com.post.id}.html#comments">
+			<h:outputText value="回复:#{com.post.title}"></h:outputText>
+		</h:outputLink><br />
+		#{com.content}</li>
+	</ui:repeat>
+</ul>
+</div>
+</div>
+
+
+
+</div>
